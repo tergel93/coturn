@@ -86,21 +86,21 @@ jobs:
         working-directory: ./docker/coturn
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ matrix.publish }}
       - name: Login to Quay.io
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: quay.io
           username: ${{ secrets.QUAYIO_ROBOT_USERNAME }}
           password: ${{ secrets.QUAYIO_ROBOT_TOKEN }}
         if: ${{ matrix.publish }}
       - name: Login to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_BOT_USER }}
           password: ${{ secrets.DOCKERHUB_BOT_PASS }}
